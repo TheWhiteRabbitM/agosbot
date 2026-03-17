@@ -6,14 +6,7 @@ set -e
 
 # Se FIREBASE_SERVICE_ACCOUNT_JSON è impostata, scrivila su file
 if [ -n "$FIREBASE_SERVICE_ACCOUNT_JSON" ]; then
-    printf '%s' "$FIREBASE_SERVICE_ACCOUNT_JSON" | python3 -c "
-import sys, json
-raw = sys.stdin.read()
-# Normalizza eventuali newline letterali nella private_key
-data = json.loads(raw)
-with open('/app/serviceAccount.json', 'w') as f:
-    json.dump(data, f, indent=2)
-"
+    echo "$FIREBASE_SERVICE_ACCOUNT_JSON" > /app/serviceAccount.json
     echo "✅ serviceAccount.json scritto da variabile d'ambiente"
 fi
 
