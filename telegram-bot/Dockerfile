@@ -22,7 +22,6 @@ COPY . .
 #   1. Aggiungi la variabile d'ambiente FIREBASE_SERVICE_ACCOUNT_JSON
 #      con il contenuto del file JSON come stringa
 #   2. Lo script di entrypoint scrive il file prima di avviare il bot
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
